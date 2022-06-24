@@ -2,10 +2,10 @@ package com.agenda.dao;
 
 import com.agenda.factory.ConnectionFactory;
 import com.agenda.model.Contato;
-import com.mysql.jdbc.PreparedStatement;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 
 public class ContatoDAO {
 
@@ -19,12 +19,14 @@ public class ContatoDAO {
         try {
             conn = ConnectionFactory.createConnectionToMySQL();
 
-            pstm = (PreparedStatement) conn.prepareStatement(sql);
+            pstm = conn.prepareStatement(sql);
             pstm.setString(1, contato.getNome());
             pstm.setInt(2, contato.getIdade());
             pstm.setDate(3, new Date(contato.getDataCadastro().getTime()));
 
             pstm.execute();
+
+            System.out.println("Contato salvo com sucesso.");
 
         } catch (Exception e) {
 

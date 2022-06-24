@@ -12,9 +12,11 @@ public class ConnectionFactory {
     public static Connection createConnectionToMySQL() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
 
-        Connection connection = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
+        return DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
 
-        return connection;
+        /* Connection connection = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
+         * return connection;
+         */
     }
 
     public static void main(String[] args) throws Exception {
